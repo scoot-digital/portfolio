@@ -1,0 +1,56 @@
+:root {
+
+    --highlightColour: #3E4B8E;
+    --secondaryColour: #FF9900;
+    --mutedColour: 7F7F7F;
+    --primaryFont: Arial;
+}
+
+body {
+
+    font-family: var(--primaryFont), Helvetica, sans-serif;
+   
+}
+
+a {
+
+    color: var(--secondaryColour);
+
+}
+
+.navbar-brand {
+
+    color: var(--highlightColour);
+    font-weight: 800;
+    font-style: italic;
+    font-size: 2em;    
+
+}
+
+.navbar-brand:hover {
+
+    color: var(--highlightColour);
+    cursor: pointer;
+
+}
+
+.nav-item{
+
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: 600;
+
+}
+
+.nav-link, .nav-link:hover{
+
+    color:black;
+
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+
+    color: var(--highlightColour);
+    font-weight: 600;
+
+}
