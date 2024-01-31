@@ -2,7 +2,7 @@
 
     --highlightColour: #3E4B8E;
     --secondaryColour: #FF9900;
-    --mutedColour: 7F7F7F;
+    --mutedColour: #7F7F7F;
     --primaryFont: Arial;
 }
 
@@ -42,9 +42,15 @@ a {
 
 }
 
+.nav-link .active{
+    
+    font-weight: 600 !important;
+
+}
+
 .nav-link, .nav-link:hover{
 
-    color:black;
+    color:var(--mutedColour);
 
 }
 

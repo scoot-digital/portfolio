@@ -1,8 +1,10 @@
-import logo from './logo.svg';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './styles/app.css';
 import Header from './components/header'
-import Jumbotron from './components/jumbotron'
-import About from './components/about'
+import Work from './pages/work'
+import About from './pages/about'
+import Resume from './pages/resume'
+import Contact from './pages/contact'
 import Footer from './components/footer'
 import Project from './components/project'
 
@@ -14,13 +16,24 @@ function App() {
 
     <div className="App">             
 
-        <Header/>
+      <BrowserRouter>
 
-        <Jumbotron/>
+        <Header>          
 
-        <About/>
+            <Routes>
 
-        <Footer/>
+              <Route path="/" element={<Work/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/resume" element={<Resume/>}/>
+              <Route path="/contact" element={<Contact/>}/>
+
+            </Routes> 
+
+        </Header>
+        
+      </BrowserRouter>
+
+      <Footer/>
 
     </div>
 

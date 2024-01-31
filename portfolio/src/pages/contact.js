@@ -1,4 +1,4 @@
-function Jumbotron(){
+function Contact(){
 
     return (
 
@@ -6,7 +6,7 @@ function Jumbotron(){
 
             <main>            
 
-                <p className="fs-5 col-md-8"><span class = "h2">Hi there!</span> Welcome to my portfolio!</p>  
+                <h2>Contact Me</h2>
 
                 <p className="fs-5 col-md-8">I'm a junior web and software developer, who focusses on making functional and attractive products for desktop and web users.</p>  
 
@@ -24,4 +24,4 @@ function Jumbotron(){
 
 }
 
-export default Jumbotron
+export default Contact
