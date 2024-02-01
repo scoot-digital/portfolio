@@ -17,9 +17,9 @@ function Header(props){
 
             <nav className="navbar navbar-light navbar-expand-md py-2 bg-light border-bottom">
                         
-                <div className = "container-md">
+                <div className = "container-md desktop-align-bottom">
                     
-                    <span className="navbar-brand d-flex align-items-center text-decoration-none">
+                    <span className="navbar-brand fs-1 text-decoration-none py-0">
 
                         Scott Green
                     
@@ -33,23 +33,21 @@ function Header(props){
             
                     <div className="collapse navbar-collapse" id = "navbar-contents">
 
-                        <ul className="nav nav-underline">
+                        <ul className="navbar-nav me-auto">
 
                             {navigation.map((item) => (
 
-                                <li className="nav-item mt-2">
+                                <li key={item.name} className="nav-item fs-5">
 
                                     <NavLink 
-
-                                        key={item.name}
+                                       
                                         to={item.href}
                                         className={({isActive}) => {
                                             
-                                            return "nav-link " +
+                                            return "nav-link py-0 " +
                                             (isActive ? "active": "")
 
                                         }}
-
 
                                     > 
 
@@ -65,7 +63,7 @@ function Header(props){
                         
                         <ul className="navbar-nav ms-auto mb-2 mb-md-0">
 
-                            <li className="nav-item">
+                            <li className="nav-item fs-4">
 
                                 <a className="nav-link" id="dark-mode" href="#"><i className="bi bi-moon-stars"></i></a>
 
@@ -79,7 +77,15 @@ function Header(props){
 
             </nav>  
 
-            {props.children}
+            <main>
+
+                <div className="container-md pt-3">    
+
+                    {props.children}
+
+                </div>
+
+            </main>
 
         </>
 

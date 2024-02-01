@@ -1,3 +1,4 @@
+import 'bootstrap/dist/js/bootstrap.bundle'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './styles/app.css';
 import Header from './components/header'

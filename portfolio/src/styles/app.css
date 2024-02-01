@@ -4,6 +4,7 @@
     --secondaryColour: #FF9900;
     --mutedColour: #7F7F7F;
     --primaryFont: Arial;
+    --smallMargin: 5px;
 }
 
 body {
@@ -18,14 +19,34 @@ a {
 
 }
 
+@media (min-width: 768px){
+
+    .desktop-align-bottom {
+        line-height:1;
+        align-items: baseline !important;
+        margin-top:var(--smallMargin);
+    }
+
+    #dark-mode{
+
+        margin-bottom:var(--smallMargin);
+    
+    }
+
+}
+
 .navbar-brand {
 
     color: var(--highlightColour);
     font-weight: 800;
     font-style: italic;
-    font-size: 2em;    
 
 }
+
+.custom-navbar-brand {
+    display: inline-block;
+    vertical-align: bottom;
+  }
 
 .navbar-brand:hover {
 
@@ -36,7 +57,6 @@ a {
 
 .nav-item{
 
-    font-size: 1.5em;
     font-style: italic;
     font-weight: 600;
 
@@ -48,9 +68,15 @@ a {
 
 }
 
-.nav-link, .nav-link:hover{
+.nav-link{
 
     color:var(--mutedColour);
+
+}
+
+.nav-link:hover, .nav:active{
+
+    color:black
 
 }
 
