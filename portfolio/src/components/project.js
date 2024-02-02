@@ -1,15 +1,13 @@
-function Project(props){
+export default function Project(props){
 
     return (
 
         <>
 
-            <h3>{props.name}</h3>
+            <h3 class="mt-3 mt-md-4">{props.name}</h3>
                     
         </>
 
     )
 
 }
-
-export default Project

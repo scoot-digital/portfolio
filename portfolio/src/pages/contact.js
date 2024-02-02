@@ -1,10 +1,10 @@
-function Contact(){
+export default function Contact(){
 
     return (
 
         <>                      
 
-            <h2>Contact Me</h2>
+            <h2 class="mt-3 mt-md-4">Contact Me</h2>
 
             <p className="fs-5 col-md-8">I'm a junior web and software developer, who focusses on making functional and attractive products for desktop and web users.</p>  
 
@@ -12,12 +12,10 @@ function Contact(){
 
             <p className="fs-5 col-md-8">Feel free to read more here, or check out my work below.</p>  
 
-            <hr className="col-3 col-md-2 mb-5"/>           
+            <hr className="col-3 col-md-2 my-4 my-md-5"/>             
 
         </>
         
     )
 
 }
-
-export default Contact

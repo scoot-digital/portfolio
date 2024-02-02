@@ -9,7 +9,7 @@ const navigation = [
 
 ]
 
-function Header(props){
+export default function Header(props){
 
     return (
 
@@ -79,7 +79,7 @@ function Header(props){
 
             <main>
 
-                <div className="container-md pt-3">    
+                <div className="container-md">    
 
                     {props.children}
 
@@ -92,5 +92,3 @@ function Header(props){
     )
 
 }
-
-export default Header
