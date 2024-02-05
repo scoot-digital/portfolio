@@ -40,10 +40,21 @@ export default function Work(){
                     
                 )
 
+                console.log("Before Promise.all");
+
                 // Resolve all promises and update the state with the combined data
                 Promise.all(promises)
-                .then(setProjects)
-                .catch(console.error)
+                    .then((combinedData) => {
+                    // Log after Promise.all
+                    console.log("After Promise.all");
+
+                    // Log combined data
+                    console.log(combinedData);
+
+                    // Update the state with the combined data
+                    setProjects(combinedData);
+                    })
+                    .catch(console.error);
 
             })
 
@@ -104,7 +115,9 @@ export default function Work(){
         const year = pushedDate.getFullYear()
         const formattedDate = `${month} ${year}`
 
-        console.log(item.cover_image)
+        console.log(projects)
+
+        console.log(item.key)
 
         //  Create portfolio items
         return(

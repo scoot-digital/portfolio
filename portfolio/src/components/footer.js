@@ -1,5 +1,8 @@
 export default function Footer(){
 
+    const d = new Date()
+    const year = d.getFullYear()
+
     return (
 
         <div className="container-md py-3">
@@ -8,7 +11,7 @@ export default function Footer(){
 
                 Created by <a href="https://linktr.ee/scoot_digital" target="_blank">scoot.</a><br/>
 
-                CSS by the Bootstrap team &middot; &copy; 2024
+                CSS by the Bootstrap team &middot; &copy; {year} 
 
             </footer>
 
