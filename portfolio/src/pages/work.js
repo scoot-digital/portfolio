@@ -16,7 +16,34 @@ export default function Work(){
             .then((response) => response.json())
             .then((data) => {
 
-                setProjects([...data])
+                //  Get metadata files for each project
+                const promises = data.map((repo) => 
+                fetch(`https://api.github.com/repos/scoot-digital/${repo.name}/contents/meta/metadata.json`)
+                    .then ((response) => response.json())
+                    .then((metadata) => {
+
+                        // Decode base64 content to get JSON
+                        const content = atob(metadata.content)
+                        const parsedMetadata = JSON.parse(content)
+
+                        //  Construct full image URL from relative path stored in metadata file
+                        const fullImageUrl = `https://raw.githubusercontent.com/scoot-digital/${repo.name}/main/meta/${parsedMetadata.imageUrl}`
+
+                        return {
+                            ...repo,
+                            cover_image: fullImageUrl,
+                        }
+                    })
+
+                    // If there's an error, use the repo without cover_image
+                    .catch(() => repo)
+                    
+                )
+
+                // Resolve all promises and update the state with the combined data
+                Promise.all(promises)
+                .then(setProjects)
+                .catch(console.error)
 
             })
 
@@ -46,7 +73,7 @@ export default function Work(){
     })
 
     //  Create page elements for tags
-    const tagElements = projectTags.map((tag, index) => (      
+    const tagFilters = projectTags.map((tag, index) => (      
 
         //  Create tag elements for filter     
         <a 
@@ -58,7 +85,7 @@ export default function Work(){
             data-bs-toggle="button"
             aria-pressed="false"          
             autoComplete="off"
-            id={tag + "-link"}
+            id={tag + "-filter"}
                         
         >
                 
@@ -66,7 +93,7 @@ export default function Work(){
 
         </a>  
 
-    ))
+    ))    
 
     //  Create page elements for projects
     const projectElements = projects.map((item) => { 
@@ -77,6 +104,8 @@ export default function Work(){
         const year = pushedDate.getFullYear()
         const formattedDate = `${month} ${year}`
 
+        console.log(item.cover_image)
+
         //  Create portfolio items
         return(
 
@@ -86,7 +115,7 @@ export default function Work(){
                     
                     <div className="card-img-top" title={item.name} style={
                         {
-                            backgroundImage:"url('https://avatars.githubusercontent.com/u/95365647')",
+                            backgroundImage:"url('" + item.cover_image + "')",
                             height:12 + "rem",
                             backgroundSize:"cover",
                             backgroundPosition:"center"
@@ -133,7 +162,7 @@ export default function Work(){
 
         //  -----   Handle active tags  -----
         
-        // If "all" is clicked, clear the active tags array
+        // If "All Projects" filter is clicked, clear the active tags array
         if (_clickedTag === "all") {
 
             updatedActiveTags.length = 0
@@ -156,8 +185,6 @@ export default function Work(){
 
         }       
 
-        setActiveTags(updatedActiveTags) 
-        
         // -----    Handle visibility of projects   -----
 
         projectElements.forEach((project) => {
@@ -197,56 +224,55 @@ export default function Work(){
         
         //  -----   Handle tag link appearance  -----   //
 
-        const allProjectsToggle = document.querySelector("#all-projects-toggle")
+        // Toggle off all tag filter elements
+        tagFilters.forEach(tagFilter => {   
+    
+            const filterElement = document.querySelector(`#${tagFilter.key}-filter`)
+
+            filterElement.setAttribute("aria-pressed", "false")                    
+            filterElement.classList.remove("active")     
+
+        })
+
+        console.log(updatedActiveTags);
+
+        //  Initialise reference to "All Projects" filter
+        const allProjectsFilter = document.querySelector("#all-projects-filter") 
 
         //  If active tags list is empty
-        if(activeTags.length === 0){
+        if(updatedActiveTags.length === 0){
 
-            // Toggle the "all projects" link
-            if(allProjectsToggle){
+            console.log("no active tags");
        
-                //allProjectsToggle.setAttribute("aria-pressed", "true")
-                allProjectsToggle.classList.add("active")
+            //  Toggle "All Projects" filter on
+            allProjectsFilter.setAttribute("aria-pressed", "true")
+            allProjectsFilter.classList.add("active")      
 
-            }
-      
-            // Toggle off all tag links
-            tagElements.forEach(tagElement => {   
-                
-                const tagLink = document.querySelector(`#${tagElement.key}-link`)
+        } else {       
+            
+            //  Toggle "All Projects" filter off
+            allProjectsFilter.setAttribute("aria-pressed", "false")                    
+            allProjectsFilter.classList.remove("active")   
 
-                tagLink.setAttribute("aria-pressed", "false")                    
-                tagLink.classList.remove("active")     
+            // Toggle on the tag filter elements for each active tag
+            tagFilters.forEach((tagFilter, index) => {
 
-            })
+                const filterElement = document.querySelector(`#${tagFilter.key}-filter`)
 
-        } else {
+                if (updatedActiveTags.includes(projectTags[index])) {
 
-            // Toggle the "all projects" link
-            if(allProjectsToggle){
+                    console.log(filterElement);
 
-                allProjectsToggle.setAttribute("aria-pressed", "false")
-                allProjectsToggle.classList.remove("active")
-
-            }
-
-            // Toggle on the tag links that match activeTags
-            tagElements.forEach((tagElement, index) => {
-
-                const tagLink = document.querySelector(`#${tagElement.key}-link`)
-
-                if (activeTags.includes(projectTags[index])) {
-
-                    console.log(tagLink);
-
-                    tagLink.setAttribute("aria-pressed", "true")
-                    tagLink.classList.add("active")
+                    filterElement.setAttribute("aria-pressed", "true")
+                    filterElement.classList.add("active")
 
                 }
 
             })
 
-        }                   
+        }         
+        
+        setActiveTags(updatedActiveTags) 
           
     }    
 
@@ -277,7 +303,7 @@ export default function Work(){
                     data-bs-toggle="button"
                     aria-pressed="true"
                     autoComplete="off"
-                    id="all-projects-toggle"
+                    id="all-projects-filter"
 
                     >
                         
@@ -285,7 +311,7 @@ export default function Work(){
 
                 </a>
                 
-                {tagElements}
+                {tagFilters}
 
             </div>
 
