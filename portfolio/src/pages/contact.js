@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -8,13 +7,13 @@ export default function Contact(){
 
     return (
 
-        <>                      
+        <div className="col-md-8">                      
 
             <h2 class="mt-3 mt-md-4">Contact Me</h2>
 
-            <p className="fs-5 col-md-8">Please feel free to get in touch if you feel I would be a good fit for your upcoming project.</p>  
+            <p className="fs-5">Please feel free to get in touch if you feel I would be a good fit for your upcoming project.</p>  
 
-            <p className="fs-5 col-md-8">You can use the contact form on this page, or send me an email directly <a href = "hello@philippeneveu.com" >here</a>.</p>  
+            <p className="fs-5">You can use the contact form on this page, or send me an email directly <a href = "hello@philippeneveu.com" >here</a>.</p>  
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>         
 
@@ -45,7 +44,8 @@ export default function Contact(){
                 </form>
             
             </div>
-        </>
+        
+        </div>
         
     )
 

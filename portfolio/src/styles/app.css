@@ -83,7 +83,21 @@ a {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
     color: var(--highlightColour);
-    font-weight: 600;
+    font-weight: 600;  
+    margin-top:2rem; 
+
+}
+
+
+h3{
+
+    color: black;
+
+}
+
+.muted{
+
+    color:var(--mutedColour)
 
 }
 
@@ -93,3 +107,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     width:1.5rem;
 
 }
+
+.list-items-spaced li{
+
+    margin-bottom:0.5rem;
+
+}
+
+.list-items-spaced-none li{
+
+    margin-bottom:0;
+
+}
+
+.list-style-type-circle::before {
+    content: "•"; /* Unicode for bullet point */
+    margin-right: 0.5em; /* Adjust spacing as needed */
+  }

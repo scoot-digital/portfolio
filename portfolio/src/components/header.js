@@ -79,9 +79,9 @@ export default function Header(props){
 
             <main>
 
-                <div className="container-md">    
+                <div className="container-md">                     
 
-                    {props.children}
+                    {props.children}                    
 
                 </div>
 
