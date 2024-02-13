@@ -123,4 +123,10 @@ h3{
 .list-style-type-circle::before {
     content: "•"; /* Unicode for bullet point */
     margin-right: 0.5em; /* Adjust spacing as needed */
-  }
+}
+
+.w-content{
+
+    width:fit-content;
+
+}
