@@ -1,6 +1,6 @@
 import { IconDownload } from '@tabler/icons-react'
 import { useState } from 'react'
-import DownloadForm from '../components/downloadForm.js'
+import DownloadForm from '../components/forms/downloadForm.js'
 
 export default function Resume(){
 

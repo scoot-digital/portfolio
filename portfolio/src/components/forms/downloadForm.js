@@ -1,8 +1,9 @@
 import { Form } from 'react-bootstrap'
 import { useState, useRef } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
-import resumeDoc from '../files/Scott_Green_Resume.docx'
-import resumePDF from '../files/Scott_Green_Resume.pdf'
+import { ValidationFormElements, ValidationReset} from '../validation.js'
+
+import resumeDoc from '../../files/Scott_Green_Resume.docx'
+import resumePDF from '../../files/Scott_Green_Resume.pdf'
 
 export default function DownloadForm() {
 
@@ -258,20 +259,9 @@ export default function DownloadForm() {
 
                     </Form.Group>
 
-                    <ReCAPTCHA
                     
-                        className="mt-3 mt-md-4"
-                        ref={recaptchaRef}
-                        sitekey="6Lct4mYpAAAAAKmG46pALJxoRmyRbe_mwI9jMHHe"
-                        onChange={(e) => setField("robot", "passed")}
-                    
-                    />    
+                    <ValidationFormElements recaptchaRef = {recaptchaRef} setField = {setField} errors = {errors} />
 
-                    <div className="invalid-feedback d-block">
-
-                        {errors.robot}
-
-                    </div>
 
                 </div>                        
 
