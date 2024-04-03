@@ -1,6 +1,5 @@
 import { IconDownload } from '@tabler/icons-react'
-import { useState } from 'react'
-import DownloadForm from '../components/forms/downloadForm.js'
+import Modal from '../components/modal.js'
 
 export default function Resume(){
 
@@ -8,25 +7,13 @@ export default function Resume(){
 
         <div className="col-md-8">      
 
-            <div className="modal" id="download-modal" tabIndex="-1" aria-hidden="true">
-
-                <div className="modal-dialog modal-dialog-centered">
-
-                    <div className="modal-content">  
-                        
-                        <DownloadForm/>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <Modal modalType = "downloadResume" />;
 
             <h2 className="mt-3 mt-md-4">My Resume</h2>
 
             <p className="fs-5">Please see below for an in-depth overview of my skills and experience.</p>
 
-            <p className="fs-5"><span className="align-middle">You can also <IconDownload className="me-1 dev-icon"/><a href="#" data-bs-toggle="modal" data-bs-target="#download-modal">download</a> my resume as a Word document or PDF.</span></p>  
+            <p className="fs-5"><span className="align-middle">You can also <IconDownload className="me-1 dev-icon"/><a href="#" data-bs-toggle="modal" data-bs-target="#downloadResume-modal">download</a> my resume as a Word document or PDF.</span></p>  
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>
 

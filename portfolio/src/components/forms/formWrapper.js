@@ -1,11 +1,12 @@
 import { Form } from 'react-bootstrap'
 import { useState, useRef } from 'react'
-import { FormValidation } from '../validation.js'
+import DownloadResumeForm from './downloadResumeForm.js'
+import EmailForm from './emailForm.js'
 
 import resumeDoc from '../../files/Scott_Green_Resume.docx'
 import resumePDF from '../../files/Scott_Green_Resume.pdf'
 
-export default function DownloadForm() {
+export default function FormWrapper({formType}) {
 
     //  Initialise reference to recaptcha widget
     const recaptchaRef = useRef(null)
@@ -19,6 +20,17 @@ export default function DownloadForm() {
     //  Declare reference to FormValidation component to be able to use its functions
     const ValidationRef = useRef()
 
+    //  Declare object to store forms
+    const forms = {        
+
+        downloadResume: ["Download Resume", DownloadResumeForm],
+        email: ["Send me an Email", EmailForm]
+        
+    }
+
+    //  Determine which form to display based on props passed in
+    const formHeader = forms[formType][0]
+    const FormElements = forms[formType][1]
 
     //  Retrieve and store form data
     const setField = (field, value) => {
@@ -211,7 +223,7 @@ export default function DownloadForm() {
 
             <div className="modal-header">
 
-                <h1 className="modal-title fs-5 mt-0" id="download-Modal-Label">Download Resume</h1>
+                <h1 className="modal-title fs-5 mt-0" id="download-Modal-Label">{formHeader}</h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={resetForm}></button>
 
             </div>
@@ -220,52 +232,14 @@ export default function DownloadForm() {
 
                 <div className="fade show" id="form-container">
 
-                    <p>Download as:</p>
-
-                    <Form.Group>
-
-                        <Form.Check
-
-                            className={!!errors.fileType && ".form-check-input:invalid"}
-                            type="radio"
-                            name="radio-filetype"
-                            id={`radio-word`}
-                            label={`Word Document`}
-                            value="docx"
-                            onChange={(e) => setField('fileType', e.target.value)}
-                            isInvalid={!!errors.fileType}
-
-                        />
-
-                        <Form.Check
-
-                            className={!!errors.fileType && ".form-check-input:invalid"}
-                            type="radio"
-                            name="radio-filetype"
-                            id={`radio-pdf`}
-                            label={`PDF Document`}
-                            value="pdf"
-                            onChange={(e) => setField('fileType', e.target.value)}
-                            isInvalid={!!errors.fileType}
-
-                        />     
-
-                        <div className="invalid-feedback d-block">
-
-                            {errors.fileType}
-
-                        </div>
-
-                    </Form.Group>
-
-                    
-                    <FormValidation 
-                        ref = {ValidationRef}
-                        recaptchaRef = {recaptchaRef} 
-                        setField = {setField} 
+                    <FormElements 
+                        resetForm = {resetForm} 
                         errors = {errors} 
+                        setField = {setField} 
+                        validationRef = {ValidationRef} 
+                        recaptchaRef = {recaptchaRef} 
+                        handleSubmit = {handleSubmit}
                     />
-
 
                 </div>                        
 
@@ -280,7 +254,7 @@ export default function DownloadForm() {
 
             <div className="modal-footer">                
                 
-                <button type="submit" className="btn btn-primary fade show" id="submit-button" onClick={handleSubmit}>Download</button>
+                <button type="submit" className="btn btn-primary fade show" id="submit-button" onClick={handleSubmit}>Confirm</button>
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={resetForm}>Close</button>               
 
             </div>

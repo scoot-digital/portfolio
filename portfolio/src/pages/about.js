@@ -12,7 +12,7 @@ export default function About(){
 
             <div className="col-md-8">   
 
-                <h2 class="mt-3 mt-md-4">About Me</h2>
+                <h2 className="mt-3 mt-md-4">About Me</h2>
 
                 <p className="fs-5">Hi, I'm Scott &#128075;</p>  
 
@@ -28,132 +28,132 @@ export default function About(){
 
             </div>
 
-            <h2 class="mt-3 mt-md-4">My Proficiencies</h2>
+            <h2 className="mt-3 mt-md-4">My Proficiencies</h2>
 
             <p className="fs-5">I have a range of experience using the following programs, programming languages and concepts.</p>
 
-            <h3 class="mt-3 mt-md-4">Programs</h3>
+            <h3 className="mt-3 mt-md-4">Programs</h3>
 
-            <ul class="list-unstyled fs-5">
+            <ul className="list-unstyled fs-5">
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Visual Studio Code</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Visual Studio Code</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">MongoDB</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">MongoDB</span>
                 
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Android Studio</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Android Studio</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Photoshop</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Photoshop</span>
 
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src={DrawioSvg} class="me-1 dev-icon"/>
-                    <span class="align-middle">Draw.io</span>
+                    <img src={DrawioSvg} className="me-1 dev-icon"/>
+                    <span className="align-middle">Draw.io</span>
                     
                 </li>
 
             </ul>
 
-            <h3 class="mt-3 mt-md-4">Languages</h3>
+            <h3 className="mt-3 mt-md-4">Languages</h3>
 
-            <ul class="list-unstyled fs-5">
+            <ul className="list-unstyled fs-5">
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Javascript</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Javascript</span>
                                                 
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
 
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">React</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">React</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Java</span>
-                    
-                </li>
-
-                <li class="d-md-inline me-md-5">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">Python</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Java</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" class="me-1 dev-icon"/>
-                    <span class="align-middle">C#</span>
-                    
-                </li>
-
-            </ul>
-
-            <h3 class="mt-3 mt-md-4">Concepts</h3>
-
-            <ul class="list-unstyled fs-5 mb-0">
-
-                <li class="d-md-inline me-md-5">
-                    
-                    <IconStack3 class="me-1 dev-icon"/>
-                    <span class="align-middle">Full-stack development</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">Python</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <IconCodeDots class="me-1 dev-icon"/>
-                    <span class="align-middle">Object-oriented programming</span>
-                    
-                </li>
-
-                <li class="d-md-inline me-md-5">
-                    
-                    <IconListCheck class="me-1 dev-icon"/>
-                    <span class="align-middle">Test-driven development</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" className="me-1 dev-icon"/>
+                    <span className="align-middle">C#</span>
                     
                 </li>
 
             </ul>
 
-            <ul class="list-unstyled fs-5">
+            <h3 className="mt-3 mt-md-4">Concepts</h3>
 
-                <li class="d-md-inline me-md-5">
+            <ul className="list-unstyled fs-5 mb-0">
+
+                <li className="d-md-inline me-md-5">
                     
-                    <IconCalendarClock class="me-1 dev-icon"/>
-                    <span class="align-middle">Project management</span>
+                    <IconStack3 className="me-1 dev-icon"/>
+                    <span className="align-middle">Full-stack development</span>
                     
                 </li>
 
-                <li class="d-md-inline me-md-5">
+                <li className="d-md-inline me-md-5">
                     
-                    <IconGitFork class="me-1 dev-icon"/>
-                    <span class="align-middle">Version control</span>
+                    <IconCodeDots className="me-1 dev-icon"/>
+                    <span className="align-middle">Object-oriented programming</span>
+                    
+                </li>
+
+                <li className="d-md-inline me-md-5">
+                    
+                    <IconListCheck className="me-1 dev-icon"/>
+                    <span className="align-middle">Test-driven development</span>
+                    
+                </li>
+
+            </ul>
+
+            <ul className="list-unstyled fs-5">
+
+                <li className="d-md-inline me-md-5">
+                    
+                    <IconCalendarClock className="me-1 dev-icon"/>
+                    <span className="align-middle">Project management</span>
+                    
+                </li>
+
+                <li className="d-md-inline me-md-5">
+                    
+                    <IconGitFork className="me-1 dev-icon"/>
+                    <span className="align-middle">Version control</span>
                     
                 </li>
 
