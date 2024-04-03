@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap'
 import { useState, useRef } from 'react'
-import { ValidationFormElements, ValidationReset} from '../validation.js'
+import { FormValidation } from '../validation.js'
 
 import resumeDoc from '../../files/Scott_Green_Resume.docx'
 import resumePDF from '../../files/Scott_Green_Resume.pdf'
@@ -15,6 +15,10 @@ export default function DownloadForm() {
 
     //  Initialise variable to store errors in the form
     const [errors, setErrors] = useState({})
+
+    //  Declare reference to FormValidation component to be able to use its functions
+    const ValidationRef = useRef()
+
 
     //  Retrieve and store form data
     const setField = (field, value) => {
@@ -53,7 +57,7 @@ export default function DownloadForm() {
 
         }
         
-        if (robot != "passed"){
+        if (robot !== "passed"){
 
             newErrors.robot= "Please confirm you are not a bot."
             
@@ -190,19 +194,14 @@ export default function DownloadForm() {
         const downloadForm = document.querySelector("#download-form")
         downloadForm.reset()
 
-        //  Reset recaptcha
-        const recaptcha = document.querySelector("#recaptcha")
-        if (recaptchaRef.current) {
-
-            recaptchaRef.current.reset()
-
-        }
+        //  Reset recaptcha   
+        ValidationRef.current.resetValidation()
 
         //  Reset form errors
         setErrors({})
 
         //  Reset form values
-        setForm({})
+        setForm({});
 
     }
 
@@ -260,7 +259,12 @@ export default function DownloadForm() {
                     </Form.Group>
 
                     
-                    <ValidationFormElements recaptchaRef = {recaptchaRef} setField = {setField} errors = {errors} />
+                    <FormValidation 
+                        ref = {ValidationRef}
+                        recaptchaRef = {recaptchaRef} 
+                        setField = {setField} 
+                        errors = {errors} 
+                    />
 
 
                 </div>                        

@@ -1,23 +1,30 @@
+import React, { forwardRef, useImperativeHandle } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-//  Reset form validation components
-export const ValidationReset = (props) => {
 
-    console.log("trying to reset captcha")
+export const FormValidation = forwardRef( (props, ref) => {
 
-    //  Reset recaptcha
-    if (props.recaptchaRef.current) {
+    //  Make functionality available to parent component
+    useImperativeHandle(ref, () => {
 
-        props.recaptchaRef.current.reset()
+        return {
+
+            resetValidation: resetValidation
+
+        }
+
+    })
+
+    // Function to reset validation form element
+    const resetValidation = () => {
+        
+        if (props.recaptchaRef.current) {
+            props.recaptchaRef.current.reset()
+        }
 
     }
 
-}
-
-
-//  Form components for validation
-export const ValidationFormElements = (props) => {
-
+    //  Form element for validation
     return (
 
         <>
@@ -41,4 +48,4 @@ export const ValidationFormElements = (props) => {
 
     )
 
-}
+})
