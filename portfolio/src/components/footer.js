@@ -9,7 +9,7 @@ export default function Footer(){
 
             <footer className="pt-3 my-3 text-muted border-top">         
 
-                Created by <a href="https://linktr.ee/scoot_digital" target="_blank">scoot.</a><br/>
+                Created by <a href="https://linktr.ee/scoot_digital" target="_blank" class="secondary-link">scoot.</a><br/>
 
                 CSS by the Bootstrap team &middot; &copy; {year} 
 

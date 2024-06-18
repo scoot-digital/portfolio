@@ -19,7 +19,7 @@ export default function Header(props){
                         
                 <div className = "container-md desktop-align-bottom">
                     
-                    <span className="navbar-brand fs-1 text-decoration-none py-0">
+                    <span className="navbar-brand fs-1 text-decoration-none py-0 cursor-default">
 
                         Scott Green
                     

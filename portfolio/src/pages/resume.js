@@ -15,7 +15,7 @@ export default function Resume() {
 
     return (
 
-        <div className="col-md-8">            
+        <div className="col-xl-8">            
 
             <ModalWrapper
 
@@ -38,7 +38,7 @@ export default function Resume() {
 
             <p className="fs-5">Please see below for an in-depth overview of my skills and experience.</p>
 
-            <p className="fs-5"><span className="d-flex align-items-center">You can also <IconDownload className="mx-1 dev-icon"/><button type="button" className="btn btn-link me-1" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume as a Word document or PDF.</span></p>  
+            <p className="fs-5">You can also <IconDownload className="me-1 align-text-bottom"/><button type="button" className="btn btn-link align-baseline" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume as a Word document or PDF.</p>  
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>
 
@@ -116,64 +116,63 @@ export default function Resume() {
 
                 <li className="fw-semibold">Coles Supermarkets, Buderim</li>
                 
-                <ul className="list-items-spaced-none">
+                    <ul className="list-items-spaced-none">
 
-                    <li>
-                        Night-fill
-                        <span className="float-md-end">Aug 2021 &ndash; Current</span>
-                    </li>
+                        <li>
+                            Night-fill
+                            <span className="float-lg-end d-block">Aug 2021 &ndash; Current</span>
+                        </li>
 
-                    <li>
-                        Personal Shopper
-                        <span className="float-md-end">Feb 2021 &ndash; Aug 2021</span>
-                    </li>
+                        <li>
+                            Personal Shopper
+                            <span className="float-lg-end d-block">Feb 2021 &ndash; Aug 2021</span>
+                        </li>
 
-                </ul>
+                    </ul>
 
                 <li className="fw-semibold mt-2">Nextra Swan Newsagency, Maroochydore</li>
                 
-                <ul className="list-items-spaced-none">
+                    <ul className="list-items-spaced-none">
 
-                    <li>
-                        Shop Attendant
-                        <span className="float-md-end">Jul 2020 &ndash; Feb 2021</span>
-                    </li>
+                        <li>
+                            Shop Attendant
+                            <span className="float-lg-end d-block">Jul 2020 &ndash; Feb 2021</span>
+                        </li>
 
-                </ul>
+                    </ul>
 
                 <li className="fw-semibold mt-2">Hertz Australia, Mackay</li>
                 
-                <ul className="list-items-spaced-none">
+                    <ul className="list-items-spaced-none">
 
-                    <li>
-                    <span className="float-md-end order-md-2 d-block">Jul 2019 &ndash; Jul 2020</span>
+                        <li>
+                            Customer Vehicle Representative
+                            <span className="float-lg-end d-block">Jul 2019 &ndash; Jul 2020</span>
+                        </li>
 
-                        <span className="order-md-1">Customer Vehicle Representative</span>
-                    </li>
-
-                </ul>
+                    </ul>
 
                 <li className="fw-semibold mt-2">Allianz Australia Insurance Limited</li>
                 
-                <ul className="list-items-spaced-none">
+                    <ul className="list-items-spaced-none">
 
-                    <li>
-                        Customer Service Specialist
-                        <span className="float-md-end">Apr 2016 &ndash; Jun 2019</span>
-                    </li>
+                        <li>
+                            Customer Service Specialist
+                            <span className="float-lg-end d-block">Apr 2016 &ndash; Jun 2019</span>
+                        </li>
 
-                </ul>
+                    </ul>
 
                 <li className="fw-semibold mt-2">Nextra News & Megabooks, Toombul</li>
                 
-                <ul className="list-items-spaced-none">
+                    <ul className="list-items-spaced-none">
 
-                    <li>
-                        Shop Attendant
-                        <span className="float-md-end">Jul 2015 &ndash; Apr 2016</span>
-                    </li>
+                        <li>
+                            Shop Attendant
+                            <span className="float-lg-end d-block">Jul 2015 &ndash; Apr 2016</span>
+                        </li>
 
-                </ul>
+                    </ul>
 
             </ul>
 
@@ -185,13 +184,9 @@ export default function Resume() {
 
                 <li>
                     
-                    <span className="fw-semibold">Bachelor of Information and Communications Technology</span>
+                    <span className="fw-semibold">Bachelor of Information and Communications Technology</span>                    
 
-                    <div>
-
-                        <span className="muted fst-italic me-3">Major in Web and Mobile Development</span> GPA 6.1
-
-                    </div>
+                    <span className="muted fst-italic me-3 d-block d-lg-inline-block">Major in Web and Mobile Development</span> GPA 6.1                    
                     
                 </li>
 
@@ -218,7 +213,7 @@ export default function Resume() {
 
             <h2>Professional References</h2>
 
-            <p className="fs-5"><span className="d-flex align-items-center">Please <IconDownload className="mx-1"/><button type="button" className="btn btn-link me-1" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume to see my current professional references.</span></p>
+            <p className="fs-5">Please <IconDownload className="me-1 align-text-bottom"/><button type="button" className="btn btn-link align-baseline" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume to see my current professional references.</p>
 
         </div>
         

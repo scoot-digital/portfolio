@@ -294,15 +294,19 @@ export default function Work(){
 
         <>
 
-            <p className="mt-3 mt-md-4 fs-5 col-md-8"><span className = "h2">Hi there,</span> welcome to my portfolio.</p>  
+            <div className="col-xl-8">    
 
-            <p className="fs-5">I'm a junior web and software developer, who focusses on making functional and attractive products for desktop and web users.</p>  
+                <p className="mt-3 mt-md-4 fs-5 col-md-8"><span className = "h2">Hi there,</span> welcome to my portfolio.</p>  
 
-            <p className="fs-5">I recently graduated from the University of the Sunshine Coast with a Bachelor of ICT.</p>  
+                <p className="fs-5">I'm a junior web and software developer, who focusses on making functional and attractive products for desktop and web users.</p>  
 
-            <p className="fs-5">Feel free to read more <NavLink to="/about" className="secondary-link">here</NavLink>, or check out my work below.</p>  
+                <p className="fs-5">I recently graduated from the University of the Sunshine Coast with a Bachelor of ICT.</p>  
 
-            <hr className="col-3 col-md-2 my-4 my-md-5"/>  
+                <p className="fs-5">Feel free to read more <NavLink to="/about" className="secondary-link">here</NavLink>, or check out my work below.</p>  
+
+                <hr className="col-3 col-md-2 my-4 my-md-5"/>  
+
+            </div>
 
             <div className="mb-4 mb-md-5 d-flex flex-wrap align-items-center gap-2">     
 
@@ -326,9 +330,9 @@ export default function Work(){
                 
                 {tagFilters}
 
-            </div>
+            </div>            
 
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">  
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">  
 
                 {projectElements}
 
