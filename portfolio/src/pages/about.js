@@ -22,7 +22,7 @@ export default function About(){
 
                 <p className="fs-5">My current goal is to finish off a handful of tools I think will make it easier for people to work on their creative projects - including tools to assist with writing, concept development and productivity. I also work on some small video games from time to time.</p>
 
-                <p className="fs-5">Please feel free to check out what I've been working on on my <NavLink to="/">portfolio</NavLink>.</p>
+                <p className="fs-5">Please feel free to check out what I've been working on on my <NavLink to="/" className="secondary-link">portfolio</NavLink>.</p>
 
                 <hr className="col-3 col-md-2 my-4 my-md-5"/>    
 
@@ -161,7 +161,7 @@ export default function About(){
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>  
             
-            <p className="fs-5">Please take a look at my <NavLink to="/resume">resume</NavLink> for a deeper look into my skills and experience.</p>        
+            <p className="fs-5">Please take a look at my <NavLink to="/resume" className="secondary-link">resume</NavLink> for a deeper look into my skills and experience.</p>        
 
         </>
         

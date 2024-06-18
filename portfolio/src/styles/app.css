@@ -2,6 +2,7 @@
 
     --highlightColour: #3E4B8E;
     --secondaryColour: #FF9900;
+    --secondaryColourDark: #FFB039;
     --mutedColour: #7F7F7F;
     --primaryFont: Arial;
     --smallMargin: 5px;
@@ -13,9 +14,29 @@ body {
    
 }
 
-a {
+.secondary-link {
 
     color: var(--secondaryColour);
+
+}
+
+.secondary-link:hover {
+
+    color: var(--secondaryColourDark) !important;
+
+}
+
+.btn-link {
+
+    color: var(--secondaryColour);
+    font-size:inherit;
+    padding:0;
+
+}
+
+.btn-link:hover, .btn-link:active {
+
+    color: var(--secondaryColourDark) !important;
 
 }
 

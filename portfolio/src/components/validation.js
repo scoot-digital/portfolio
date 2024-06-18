@@ -2,24 +2,22 @@ import React, { forwardRef, useImperativeHandle } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 
-export const FormValidation = forwardRef( (props, ref) => {
+export const FormValidation = forwardRef( ({recaptchaRef, setField, errors}, ref) => {
 
     //  Make functionality available to parent component
-    useImperativeHandle(ref, () => {
+    useImperativeHandle(ref, () => ({
 
-        return {
+        resetValidation
 
-            resetValidation: resetValidation
-
-        }
-
-    })
+    }));
 
     // Function to reset validation form element
     const resetValidation = () => {
-        
-        if (props.recaptchaRef.current) {
-            props.recaptchaRef.current.reset()
+
+        if (recaptchaRef.current) {
+
+            recaptchaRef.current.reset();
+
         }
 
     }
@@ -32,15 +30,15 @@ export const FormValidation = forwardRef( (props, ref) => {
             <ReCAPTCHA
                             
                 className="mt-3 mt-md-4"
-                ref={props.recaptchaRef}
+                ref={recaptchaRef}
                 sitekey="6Lct4mYpAAAAAKmG46pALJxoRmyRbe_mwI9jMHHe"
-                onChange={(e) => props.setField("robot", "passed")}
+                onChange={() => setField("robot", "passed")}
             
             />    
 
             <div className="invalid-feedback d-block">
 
-                {props.errors.robot}
+                {errors.robot}
 
             </div>
 

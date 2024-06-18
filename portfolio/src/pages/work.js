@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom'
-import { useState, useEffect, useRef} from "react"
+import { useState, useEffect } from "react"
 
 export default function Work(){
 
@@ -87,9 +87,9 @@ export default function Work(){
     const tagFilters = projectTags.map((tag, index) => (      
 
         //  Create tag elements for filter     
-        <a 
+        <button 
 
-            href="#"
+            type="button"
             className={`btn btn-light border border-secondary-subtle fs-6}`}
             onClick={() => showProjects({tag}.tag)} 
             key={tag}
@@ -102,7 +102,7 @@ export default function Work(){
                 
             {tag}
 
-        </a>  
+        </button>  
 
     ))    
 
@@ -300,7 +300,7 @@ export default function Work(){
 
             <p className="fs-5">I recently graduated from the University of the Sunshine Coast with a Bachelor of ICT.</p>  
 
-            <p className="fs-5">Feel free to read more <NavLink to="/about">here</NavLink>, or check out my work below.</p>  
+            <p className="fs-5">Feel free to read more <NavLink to="/about" className="secondary-link">here</NavLink>, or check out my work below.</p>  
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>  
 
@@ -308,9 +308,9 @@ export default function Work(){
 
                 <span className="fs-5 fw-semibold">Filters: </span>
 
-                <a 
+                <button 
 
-                    href="#"
+                    type="button"
                     className="btn btn-light border border-secondary-subtle fs-6 active" 
                     onClick={() => showProjects('all') }
                     data-bs-toggle="button"
@@ -322,7 +322,7 @@ export default function Work(){
                         
                     all projects
 
-                </a>
+                </button>
                 
                 {tagFilters}
 

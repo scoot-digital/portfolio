@@ -1,12 +1,12 @@
+//  Import required libraries
 import { Form } from 'react-bootstrap'
-import { useState, useRef } from 'react'
-import DownloadResumeForm from './downloadResumeForm.js'
-import EmailForm from './emailForm.js'
+import React, { useState, useRef, forwardRef, useImperativeHandle, cloneElement } from 'react'
 
+//  Import form types and any files to be returned to user
 import resumeDoc from '../../files/Scott_Green_Resume.docx'
 import resumePDF from '../../files/Scott_Green_Resume.pdf'
 
-export default function FormWrapper({formType}) {
+export const FormWrapper = forwardRef(({ children }, ref) => {
 
     //  Initialise reference to recaptcha widget
     const recaptchaRef = useRef(null)
@@ -18,19 +18,7 @@ export default function FormWrapper({formType}) {
     const [errors, setErrors] = useState({})
 
     //  Declare reference to FormValidation component to be able to use its functions
-    const ValidationRef = useRef()
-
-    //  Declare object to store forms
-    const forms = {        
-
-        downloadResume: ["Download Resume", DownloadResumeForm],
-        email: ["Send me an Email", EmailForm]
-        
-    }
-
-    //  Determine which form to display based on props passed in
-    const formHeader = forms[formType][0]
-    const FormElements = forms[formType][1]
+    const ValidationRef = useRef() 
 
     //  Retrieve and store form data
     const setField = (field, value) => {
@@ -83,7 +71,11 @@ export default function FormWrapper({formType}) {
     const handleSubmit = e => {
 
         //  Prevent page refresh
-        e.preventDefault()        
+        if (e) {
+
+            e.preventDefault();
+
+        }    
 
         //  Check if there are errors in the form
         const formErrors = validateForm()
@@ -100,32 +92,36 @@ export default function FormWrapper({formType}) {
             console.log(form)
 
             //  Initialise references to elements to fade
-            const formContainer = document.querySelector("#form-container")
-            const formHeader = document.querySelector("#download-Modal-Label")
+            const formContainer = document.querySelector("#form-content")
             const submitButton = document.querySelector("#submit-button")
             const formConfirmation = document.querySelector("#form-confirmation")
 
             //  Fade out required elements
-            {[formHeader, formContainer, submitButton].map((element) => (
+            if (formContainer && submitButton) {
 
-                element.classList.remove("show"),
-                element.classList.add("hidden")
-                
-             ))}
+                [formContainer, submitButton].forEach(element => {
 
-            //  Change form header
-            formHeader.innerText = "Download In Progress"
+                    element.classList.remove("show")
+                    element.classList.add("hidden")
+
+                })
+
+            }
 
             //  Remove required elements from page
             setTimeout(() => {
 
-                {[formContainer, submitButton].map((element) => (
-                
-                    element.classList.add("d-none")
-                
-                ))}
+                if (formContainer && submitButton) {
 
-            }, 250)   
+                    [formContainer, submitButton].forEach(element => {
+
+                        element.classList.add("d-none")
+
+                    })
+
+                }
+
+            }, 250)  
 
             //  -----   Download document required  -----
 
@@ -162,12 +158,16 @@ export default function FormWrapper({formType}) {
             setTimeout(() => {
 
                 //  Show header and confirmation
-                {[formHeader, formConfirmation].map((element) => (
+                if (formConfirmation) {
 
-                    element.classList.remove("hidden", "d-none"),
-                    element.classList.add("show")
-                    
-                ))}
+                    [formConfirmation].forEach(element => {
+
+                        element.classList.remove("hidden", "d-none")
+                        element.classList.add("show")
+
+                    })
+
+                }
 
             }, 250)
 
@@ -175,39 +175,48 @@ export default function FormWrapper({formType}) {
 
     }
 
-    const resetForm = e => {
+    const resetForm = () => {
 
         //  Initialise references to elements change visibility
-        const formContainer = document.querySelector("#form-container")
-        const formHeader = document.querySelector("#download-Modal-Label")
+        const formContainer = document.querySelector("#form-content")
         const submitButton = document.querySelector("#submit-button")
         const formConfirmation = document.querySelector("#form-confirmation")
 
-        //  Change form header
-        formHeader.innerText = "Download Resume"
-
         //  Hide required elements
-        {[formConfirmation].map((element) => (
+        if (formConfirmation) {
 
-            element.classList.remove("show"),
-            element.classList.add("hidden", "d-none")
-            
-        ))}
+            [formConfirmation].forEach(element => {
+
+                element.classList.remove("show")
+                element.classList.add("hidden", "d-none")
+
+            })
+
+        }
 
         //  Show required elements
-        {[formContainer, submitButton].map((element) => (
+        if (formContainer && submitButton) {
 
-            element.classList.add("show"),
-            element.classList.remove("hidden", "d-none")
-            
-        ))}
+            [formContainer, submitButton].forEach(element => {
+
+                element.classList.add("show")
+                element.classList.remove("hidden", "d-none")
+
+            })
+
+        }
 
         //  Reset form page elements
-        const downloadForm = document.querySelector("#download-form")
-        downloadForm.reset()
+        const downloadForm = document.querySelector("#form-container")
+
+        if (downloadForm) {
+
+            downloadForm.reset()
+
+        }
 
         //  Reset recaptcha   
-        ValidationRef.current.resetValidation()
+        ValidationRef.current?.resetValidation()
 
         //  Reset form errors
         setErrors({})
@@ -217,50 +226,29 @@ export default function FormWrapper({formType}) {
 
     }
 
+    //  Make functionality available to parent component
+    useImperativeHandle(ref, () => ({
+
+        resetForm,
+        handleSubmit
+
+    }))
+
+    //  Clone child component to add props
+    const requiredForm = React.Children.map(children, child =>
+    
+        cloneElement(child, {recaptchaRef, setField, errors})
+
+    )
+
     return (
 
-        <Form className="row m-0" id="download-form">
+        <Form className="row m-0" id="form-container">            
 
-            <div className="modal-header">
-
-                <h1 className="modal-title fs-5 mt-0" id="download-Modal-Label">{formHeader}</h1>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={resetForm}></button>
-
-            </div>
-
-            <div className="modal-body">
-
-                <div className="fade show" id="form-container">
-
-                    <FormElements 
-                        resetForm = {resetForm} 
-                        errors = {errors} 
-                        setField = {setField} 
-                        validationRef = {ValidationRef} 
-                        recaptchaRef = {recaptchaRef} 
-                        handleSubmit = {handleSubmit}
-                    />
-
-                </div>                        
-
-                <div className="fade hidden d-none" id="form-confirmation">
-
-                    <p>Please check your downloads folder.</p>
-                    <p className = "mb-0">You may now close this form.</p>
-
-                </div>
-
-            </div>
-
-            <div className="modal-footer">                
-                
-                <button type="submit" className="btn btn-primary fade show" id="submit-button" onClick={handleSubmit}>Confirm</button>
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={resetForm}>Close</button>               
-
-            </div>
+            {requiredForm}            
 
         </Form>
 
     )
 
-}
+})

@@ -1,19 +1,44 @@
+import { useRef } from 'react'
 import { IconDownload } from '@tabler/icons-react'
-import Modal from '../components/modal.js'
+import { ModalWrapper } from '../components/modalWrapper.js'
+import { ModalType } from "../components/modalWrapper.js"
+import { FormWrapper } from '../components/forms/formWrapper.js'
+import DownloadResumeForm from '../components/forms/downloadResumeForm.js'
 
-export default function Resume(){
+export default function Resume() {
+
+    //  Initialise reference to modalWrapper component
+    const modalWrapperRef = useRef(null)
+
+    //  Initialise reference to formWrapper component to be passed to modalWrapper
+    const formWrapperRef = useRef(null)
 
     return (
 
-        <div className="col-md-8">      
+        <div className="col-md-8">            
 
-            <Modal modalType = "downloadResume" />;
+            <ModalWrapper
+
+                _link = {document.querySelectorAll("#toggle-modal")}
+                _type = {ModalType.FORM}
+                _title = "Download Resume"   
+                ref = {modalWrapperRef}
+
+            >
+
+                <FormWrapper ref = {formWrapperRef}>
+
+                    <DownloadResumeForm/>
+
+                </FormWrapper>                
+
+            </ModalWrapper>
 
             <h2 className="mt-3 mt-md-4">My Resume</h2>
 
             <p className="fs-5">Please see below for an in-depth overview of my skills and experience.</p>
 
-            <p className="fs-5"><span className="align-middle">You can also <IconDownload className="me-1 dev-icon"/><a href="#" data-bs-toggle="modal" data-bs-target="#downloadResume-modal">download</a> my resume as a Word document or PDF.</span></p>  
+            <p className="fs-5"><span className="d-flex align-items-center">You can also <IconDownload className="mx-1 dev-icon"/><button type="button" className="btn btn-link me-1" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume as a Word document or PDF.</span></p>  
 
             <hr className="col-3 col-md-2 my-4 my-md-5"/>
 
@@ -193,7 +218,7 @@ export default function Resume(){
 
             <h2>Professional References</h2>
 
-            <p className="fs-5"><span className="align-middle">Please <IconDownload className="me-1"/><a href="#" data-bs-toggle="modal" data-bs-target="#download-modal">download</a> my resume to see my current professional references.</span></p>
+            <p className="fs-5"><span className="d-flex align-items-center">Please <IconDownload className="mx-1"/><button type="button" className="btn btn-link me-1" onClick={() => {modalWrapperRef.current?.toggleModal();}}>download</button> my resume to see my current professional references.</span></p>
 
         </div>
         
